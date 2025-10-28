@@ -1,42 +1,187 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8fafc;
+  color: #334155;
+}
+
+.app {
+  min-height: 100vh;
+}
+
+.app-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1rem 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.app-header h1 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.nav-tabs {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.nav-tab {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.nav-tab:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.nav-tab.active {
+  background: white;
+  color: #667eea;
+}
+
+.app-main {
   padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Summary Cards */
+.summary-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.summary-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
+  border-left: 4px solid #667eea;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.card-value {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #1e293b;
+  margin-bottom: 0.5rem;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.card-label {
+  color: #64748b;
+  font-size: 0.9rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/* Dashboard Content */
+.dashboard-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
 }
 
-.card {
-  padding: 2em;
+.chart-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
 }
 
-.read-the-docs {
-  color: #888;
+.chart-container {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.chart-container h3 {
+  margin-bottom: 1rem;
+  color: #1e293b;
+}
+
+.info-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.critical-tasks, .team-overview {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.critical-tasks h3, .team-overview h3 {
+  margin-bottom: 1rem;
+  color: #1e293b;
+}
+
+.task-item {
+  padding: 0.75rem;
+  border-left: 3px solid #f59e0b;
+  background: #fffbeb;
+  margin-bottom: 0.5rem;
+  border-radius: 4px;
+}
+
+.task-title {
+  font-weight: 500;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.task-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+.status {
+  padding: 0.2rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: bold;
+}
+
+.status.todo { background: #fef3c7; color: #d97706; }
+.status.in-progress { background: #dbeafe; color: #1d4ed8; }
+.status.done { background: #dcfce7; color: #166534; }
+
+.team-member {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.team-member:last-child {
+  border-bottom: none;
+}
+
+.member-info strong {
+  color: #1e293b;
+}
+
+.member-stats {
+  font-size: 0.8rem;
+  color: #64748b;
+  text-align: right;
+}
+
+.member-stats span {
+  display: block;
 }
