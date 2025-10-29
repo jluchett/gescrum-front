@@ -6,6 +6,8 @@ import SprintManagement from './components/SprintManagement';
 import KanbanBoard from './components/KanbanBoard';
 import TeamManagement from './components/TeamManagement';
 import BacklogManagement from './components/BacklogManagement';
+import Notifications from './components/Notifications';
+import TaskTemplates from './components/TaskTemplates';
 import './styles/App.css';
 
 function App() {
@@ -21,9 +23,16 @@ function App() {
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <div className="app">
+       <div className="app">
         <header className="app-header">
-          <h1>🚀 Scrum Dashboard - Telegram JSF</h1>
+          <div className="header-main">
+            <h1>🚀 Scrum Dashboard - Telegram JSF</h1>
+            <div className="header-actions">
+              <TaskTemplates />
+              <Notifications />
+            </div>
+          </div>
+          
           <nav className="nav-tabs">
             {tabs.map(tab => (
               <button

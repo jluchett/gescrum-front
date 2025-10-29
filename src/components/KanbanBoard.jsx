@@ -24,15 +24,17 @@ const TaskCard = ({ task, onStatusChange }) => {
       style={{ opacity: isDragging ? 0.5 : 1 }}
     >
       <div className="task-header">
-        <span className="task-points">{task.storyPoints} pts</span>
+        <span className="task-points">{task.storyPoints || 0} pts</span>
         <span className={`task-priority ${task.priority}`}>
           {task.priority}
         </span>
       </div>
       <h4 className="task-title">{task.title}</h4>
-      <p className="task-description">{task.description}</p>
+      {task.description && (
+        <p className="task-description">{task.description}</p>
+      )}
       <div className="task-footer">
-        <span className="task-assignee">👤 {task.assignee}</span>
+        <span className="task-assignee">👤 {task.assignee || 'Sin asignar'}</span>
         {task.dueDate && (
           <span className="task-due">
             📅 {new Date(task.dueDate).toLocaleDateString()}

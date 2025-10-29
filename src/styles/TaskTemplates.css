@@ -1,0 +1,450 @@
+.task-templates {
+  position: relative;
+  display: inline-block;
+}
+
+.templates-panel {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 450px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  box-shadow: 0 20px 25px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  margin-top: 0.5rem;
+  animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.templates-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid #e2e8f0;
+  background: #f8fafc;
+  border-radius: 12px 12px 0 0;
+}
+
+.templates-header h3 {
+  margin: 0;
+  color: #1e293b;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.templates-header h3::before {
+  content: '📋';
+  font-size: 1.4rem;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #64748b;
+  padding: 0.25rem;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.close-btn:hover {
+  color: #1e293b;
+  background: #f1f5f9;
+}
+
+.templates-grid {
+  padding: 1.5rem;
+  display: grid;
+  gap: 1rem;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.template-card {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 1.25rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.template-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: #3b82f6;
+  transition: width 0.3s ease;
+}
+
+.template-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  border-color: #3b82f6;
+}
+
+.template-card:hover::before {
+  width: 6px;
+}
+
+.template-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.75rem;
+}
+
+.template-header h4 {
+  margin: 0;
+  color: #1e293b;
+  font-size: 1rem;
+  font-weight: 600;
+  flex: 1;
+  margin-right: 1rem;
+}
+
+.template-points {
+  background: #3b82f6;
+  color: white;
+  padding: 0.3rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  min-width: 45px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.template-preview {
+  color: #64748b;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  margin-bottom: 0.75rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-style: italic;
+}
+
+.template-priority {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+.priority-high,
+.priority-medium,
+.priority-low {
+  padding: 0.2rem 0.5rem;
+  border-radius: 8px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.priority-high {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.priority-medium {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.priority-low {
+  background: #dcfce7;
+  color: #166534;
+}
+
+/* Estilos específicos para cada tipo de plantilla */
+.template-card:nth-child(1)::before { background: #ef4444; } /* Bug */
+.template-card:nth-child(1):hover { border-color: #ef4444; }
+.template-card:nth-child(1) .template-points { background: #ef4444; }
+
+.template-card:nth-child(2)::before { background: #10b981; } /* Nueva Funcionalidad */
+.template-card:nth-child(2):hover { border-color: #10b981; }
+.template-card:nth-child(2) .template-points { background: #10b981; }
+
+.template-card:nth-child(3)::before { background: #8b5cf6; } /* UI/UX */
+.template-card:nth-child(3):hover { border-color: #8b5cf6; }
+.template-card:nth-child(3) .template-points { background: #8b5cf6; }
+
+.template-card:nth-child(4)::before { background: #64748b; } /* Documentación */
+.template-card:nth-child(4):hover { border-color: #64748b; }
+.template-card:nth-child(4) .template-points { background: #64748b; }
+
+.template-card:nth-child(5)::before { background: #f59e0b; } /* Pruebas */
+.template-card:nth-child(5):hover { border-color: #f59e0b; }
+.template-card:nth-child(5) .template-points { background: #f59e0b; }
+
+/* Estados de interacción */
+.template-card:active {
+  transform: translateY(0);
+  transition: transform 0.1s ease;
+}
+
+.template-card.loading {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.template-card.loading::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Scrollbar personalizado */
+.templates-grid::-webkit-scrollbar {
+  width: 6px;
+}
+
+.templates-grid::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 3px;
+}
+
+.templates-grid::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+.templates-grid::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .templates-panel {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90vw;
+    max-width: 400px;
+    max-height: 80vh;
+    margin: 0;
+  }
+
+  .templates-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    padding: 1rem;
+  }
+
+  .template-card {
+    padding: 1rem;
+  }
+
+  .template-header h4 {
+    font-size: 0.9rem;
+  }
+
+  .template-preview {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .templates-panel {
+    width: 95vw;
+  }
+
+  .templates-header {
+    padding: 1rem;
+  }
+
+  .templates-header h3 {
+    font-size: 1.1rem;
+  }
+
+  .template-card {
+    padding: 0.75rem;
+  }
+}
+
+/* Estados vacíos */
+.templates-empty {
+  text-align: center;
+  padding: 3rem 2rem;
+  color: #64748b;
+}
+
+.templates-empty-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+.templates-empty h4 {
+  color: #475569;
+  margin-bottom: 0.5rem;
+}
+
+.templates-empty p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/* Modo de alto contraste */
+@media (prefers-contrast: high) {
+  .template-card {
+    border: 2px solid #000;
+  }
+
+  .template-card::before {
+    width: 6px;
+    background: #000;
+  }
+
+  .template-points {
+    border: 1px solid #000;
+  }
+}
+
+/* Prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .templates-panel {
+    animation: none;
+  }
+
+  .template-card {
+    transition: none;
+  }
+
+  .template-card:hover {
+    transform: none;
+  }
+
+  .template-card::before {
+    transition: none;
+  }
+}
+
+/* Estados de focus para accesibilidad */
+.template-card:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+.close-btn:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Mejoras de tipografía */
+.template-preview {
+  font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+}
+
+/* Efectos de profundidad */
+.templates-panel {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+/* Indicador de nueva plantilla */
+.template-card.new::after {
+  content: 'NUEVO';
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #ef4444;
+  color: white;
+  padding: 0.2rem 0.5rem;
+  border-radius: 8px;
+  font-size: 0.6rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* Tooltips para información adicional */
+.template-card {
+  position: relative;
+}
+
+.template-card:hover .template-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.template-tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  z-index: 10;
+  margin-bottom: 5px;
+}
+
+.template-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 20px;
+  border: 5px solid transparent;
+  border-top-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Grupos de plantillas */
+.template-group {
+  margin-bottom: 1.5rem;
+}
+
+.template-group-header {
+  color: #64748b;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+  padding-left: 0.5rem;
+  border-left: 3px solid #3b82f6;
+}
