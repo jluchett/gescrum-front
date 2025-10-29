@@ -436,7 +436,7 @@ const SprintCard = ({ sprint, onSelect, onComplete }) => {
 
       <div className="sprint-dates">
         <span className="date-range">
-          {new Date(sprint.startDate).toLocaleDateString()} - {new Date(sprint.endDate).toLocaleDateString()}
+          {new Date(sprint.startDate).toLocaleDateString('es-CO', { timeZone: 'UTC' })} - {new Date(sprint.endDate).toLocaleDateString('es-CO', { timeZone: 'UTC' })}
         </span>
         <span className="duration">({duration} días)</span>
       </div>
@@ -504,11 +504,11 @@ const SprintModal = ({ sprint, tasks, metrics, onClose, onComplete, onTaskCreate
             <div className="dates-grid">
               <div className="date-item">
                 <span className="date-label">Inicio:</span>
-                <span className="date-value">{new Date(sprint.startDate).toLocaleDateString()}</span>
+                <span className="date-value">{new Date(sprint.startDate).toLocaleDateString('es-CO', { timeZone: 'UTC' })}</span>
               </div>
               <div className="date-item">
                 <span className="date-label">Fin:</span>
-                <span className="date-value">{new Date(sprint.endDate).toLocaleDateString()}</span>
+                <span className="date-value">{new Date(sprint.endDate).toLocaleDateString('es-CO', { timeZone: 'UTC' })}</span>
               </div>
               <div className="date-item">
                 <span className="date-label">Duración:</span>
@@ -666,10 +666,11 @@ const getSprintStatusInfo = (sprint) => {
       icon: '🚀'
     };
   }
-  if (now < start) {
+  if (now < start || sprint.status === 'planned') {
     const daysUntil = Math.ceil((start - now) / (1000 * 60 * 60 * 24));
+    const statusText = daysUntil > 0 ? (daysUntil === 1 ? 'Inicia en 1 día' : `Inicia en ${daysUntil} días`) : 'Inició hoy';
     return { 
-      status: `Planificado - Inicia en ${daysUntil}d`, 
+      status: `Planificado - ${statusText}`, 
       className: 'planned',
       icon: '📅'
     };
